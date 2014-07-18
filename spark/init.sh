@@ -7,8 +7,13 @@ if [ -d "spark" ]; then
   return
 fi
 
+# Custom Spark tgz  ?
+if [[ "x$SPARK_CUSTOM_TGZ" != "x" ]]
+then
+  wget $SPARK_CUSTOM_TGZ
+
 # Github tag:
-if [[ "$SPARK_VERSION" == *\|* ]]
+elif [[ "$SPARK_VERSION" == *\|* ]]
 then
   mkdir spark
   pushd spark
